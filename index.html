@@ -1,0 +1,136 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>SoonforERP</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="./layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="./index.css" media="all">
+</head>
+
+<body class="layui-layout-body">
+    <div id="LAY_app">
+        <div class="layui-layout layui-layout-admin">
+            <!-- 侧边菜单 -->
+            <div class="layui-side sf-layout-left" id="LAY_app_side">
+                <a class="sf-logo" href="">
+                    <span>SoonforERP</span>
+                    <img src="./logo.png" width="30" height="30" />
+                </a>
+                <div class="sf-nav-scroll">
+                    <div class="sf-nav-scroll-box">
+                        <ul class="layui-nav layui-nav-tree" lay-filter="layadmin-side-nav"></ul>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧主体 -->
+            <div class="sf-layout-right" id="LAY_app_right">
+                <!-- 头部区域 -->
+                <div class="sf-layout-right-header">
+                    <a href="javascript:;" class="sf-flexible" layadmin-event="flexible" title="收起"
+                        id="LAY_app_flexible">
+                        <i class="layui-icon layui-icon-shrink-right"></i>
+                    </a>
+                    <ul class="layui-nav">
+                        <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+                            <a href="javascript:;" layadmin-event="theme" title="主题方案">
+                                <i class="layui-icon layui-icon-theme"></i>
+                            </a>
+                        </li>
+                        <li class="layui-nav-item layui-hide-xs" lay-unselect="">
+                            <a href="javascript:;" layadmin-event="fullscreen" title="开启全屏" id="LAY_app_fullscreen">
+                                <i class="layui-icon layui-icon-screen-full"></i>
+                            </a>
+                        </li>
+                        <li class="layui-nav-item" lay-unselect="">
+                            <a href="javascript:;">
+                                <img src="./logo.png" width="26" height="26" />
+                                <cite>管理员</cite>
+                                <span class="layui-nav-more"></span>
+                            </a>
+                            <dl class="layui-nav-child layui-anim layui-anim-upbit">
+                                <dd><a lay-href="set/user/info.html">基本资料</a></dd>
+                                <dd><a lay-href="set/user/password.html">修改密码</a></dd>
+                                <hr>
+                                <dd layadmin-event="logout" style="text-align: center;"><a>退出</a></dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+                <!-- 页面标签 -->
+                <div class="sf-page-tabs" id="LAY_app_tabs">
+                    <div class="layui-icon sf-page-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+                    <div class="layui-icon sf-page-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+                    <div class="layui-icon sf-page-tabs-control layui-icon-refresh" layadmin-event="refresh"></div>
+                    <div class="layui-icon sf-page-tabs-control layui-icon-share" layadmin-event="openInNewTab"></div>
+                    <div class="layui-icon sf-page-tabs-control layui-icon-down">
+                        <ul class="layui-nav sf-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                            <li class="layui-nav-item" lay-unselect="">
+                                <a href="javascript:;"><span class="layui-nav-more"></span></a>
+                                <dl class="layui-nav-child layui-anim-fadein layui-anim layui-anim-upbit">
+                                    <dd layadmin-event="closeThisTabs">
+                                        <a href="javascript:;">关闭当前标签页</a>
+                                    </dd>
+                                    <dd layadmin-event="closeOtherTabs">
+                                        <a href="javascript:;">关闭其它标签页</a>
+                                    </dd>
+                                    <dd layadmin-event="closeAllTabs">
+                                        <a href="javascript:;">关闭全部标签页</a>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="layui-tab" lay-unauto="" lay-allowclose="true" lay-filter="layadmin-layout-tabs">
+                        <!-- 标签 -->
+                        <ul class="layui-tab-title" id="LAY_app_tabsheader"></ul>
+                        <!-- 主体内容 -->
+                        <div class="layui-tab-content" id="LAY_app_content"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 遮罩层 -->
+            <div class="sf-body-shade" layadmin-event="shade"></div>
+            <!-- 悬浮菜单层 -->
+            <ul class="layui-nav layui-nav-tree sf-side-menu-shade">
+                <li class="layui-nav-item layui-nav-itemed"></li>
+            </ul>
+            <!-- 分割器 -->
+            <div id="LAY_app_side_split"></div>
+        </div>
+    </div>
+
+    <script src="./layui/layui.js"></script>
+    <script>
+        layui.config({
+            base: '/'
+        }).extend({
+            sf: 'index'
+        });
+        layui.use(["sf"], function () {
+            var sf = layui.sf;
+            var source = [{
+                "f0": "系统管理",
+                "f2": "mSystemManager",
+                "f22": "mSystemManager",
+                "f23": "f-iconfont-home",
+                "f4": null,
+                "f6": null,
+                "f14": null
+            }];
+            sf.initMenu(source, {
+                title: "f0",
+                url: "f6",
+                icon: "f23",
+                child: "f7"
+            });
+            sf.init();
+        });
+    </script>
+    <style id="LAY_layadmin_theme"></style>
+</body>
+
+</html>
